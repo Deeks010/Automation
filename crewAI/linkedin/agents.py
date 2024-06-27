@@ -40,7 +40,7 @@ drafting_agent = Agent(
         "tones and styles, from professional and informative to casual and conversational. Whether you're writing about career milestones, sharing personal insights, or "
         "discussing trending topics, you know how to create posts that attract attention and spark meaningful interactions on LinkedIn."
     ),
-    tools=[tool],      
+    # tools=[tool],      
     llm=llm,
     allow_delegation=True ,   
 )
@@ -63,7 +63,7 @@ editing_refinement_agent = Agent(
         "initial drafts into polished and compelling posts that not only convey intended messages but also captivate and resonate with a diverse audience. Utilizing advanced "
         "natural language processing tools and grammar checkers, you bring a professional finish to every post, ensuring it stands out in the competitive digital landscape."
     ), 
-    tools=[tool],  
+    # tools=[tool],  
     llm=llm,
     allow_delegation=True, 
 )
@@ -89,7 +89,7 @@ seo_optimization_agent = Agent(
         "insights into content visibility and audience targeting make you an invaluable asset in driving engagement and attracting "
         "the right viewers."
     ),  
-    tools=[tool], 
+    # tools=[tool], 
     llm=llm,
     allow_delegation=True,
 )
@@ -136,7 +136,7 @@ chief_agent = Agent(
         "My goal is to deliver polished and engaging content that resonates with "
         "audiences on LinkedIn."
     ),
-    tools=[tool], 
+    # tools=[tool], 
     llm=llm,
     allow_delegation=False, 
 
