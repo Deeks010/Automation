@@ -13,5 +13,5 @@ crew = Crew(
 
 )
 
-result = crew.kickoff(inputs = {'topic':'stable diffusion'})
+result = crew.kickoff(inputs = {'topic':'i recently participated in GDSC solution challenge and i also got selected in top 100 finalist'})
 print(result)
