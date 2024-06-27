@@ -53,6 +53,7 @@ seo_task = Task(
 
 # )
 
+
 chief_task = Task(
     description=(
         "Aggregate and compile the final results from various tasks into a cohesive LinkedIn post. "
@@ -60,7 +61,8 @@ chief_task = Task(
     ),
     expected_output=(
         "A finalized LinkedIn post on {topic}, incorporating outputs from drafting, refinement, SEO optimization, and visual content tasks. "
-        "The post is engaging, informative, and tailored to resonate with the target audience on LinkedIn."
+        "The post is engaging, informative, and tailored to resonate with the target audience on LinkedIn. "
+        "End the post with an interactive call-to-action inviting readers to share their thoughts or comments below."
     ),
     agent=chief_agent,
     async_execution=False,

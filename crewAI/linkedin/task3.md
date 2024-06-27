@@ -1,13 +1,11 @@
-## From Code to Impact: Top 100 Finalist in the GDSC Solution Challenge! 💻🏆
+**Hacking for Financial Inclusion at #HackBangalore!** 
 
-I'm thrilled to announce that I've been selected as a top 100 finalist in the Google Developer Student Clubs (GDSC) Solution Challenge! This experience has been a game-changer, pushing me to think creatively and collaborate with amazing minds to solve real-world problems using technology. 
+I recently had the incredible opportunity to participate in the #HackBangalore competition organized by @AngelHacks, focusing on #FinancialInclusion. 
 
-As a software engineering student, I'm passionate about using technology to make a positive impact. This challenge provided the perfect opportunity to put my skills to the test and contribute to a project that truly resonated with me. 
+It was an exhilarating experience! We dove into the challenge of financial accessibility, brainstorming innovative solutions. Our team developed a mobile app for #Creditworthiness assessment and a gamified platform for #FinancialLiteracy, aiming to empower individuals and communities. 
 
-The journey has been invaluable, allowing me to connect with other tech enthusiasts, hone my problem-solving skills, and gain valuable insights into the ever-evolving tech landscape. 
+This #Hackathon was a fantastic platform for collaboration, learning, and making a positive impact. We connected with brilliant minds, explored cutting-edge #Fintech solutions, and contributed to #SocialImpact. 
 
-I'm incredibly grateful for this opportunity and excited to see what the future holds.  I'm eager to connect with other passionate individuals and explore innovative solutions that can make a real difference. 
+#TechForGood #Startup #Bangalore #India 
 
-**[Image: A visually appealing image showcasing the GDSC Solution Challenge, your team, or your project.]**
-
-#GDSC #SolutionChallenge #GoogleDeveloper #TechCompetition #SoftwareEngineering #Top100Finalist #StudentDeveloper #Innovation #ProblemSolving #TechEnthusiast #Career #LinkedIn #Google #Developer #Student #Coding #Programming #TechCommunity
+**What are your thoughts on leveraging technology for financial inclusion? Share your ideas and insights in the comments below!** 👇
