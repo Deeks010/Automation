@@ -12,6 +12,7 @@ crew = Crew(
     share_crew = True
 
 )
+text = input("Enter here : ")
 
-result = crew.kickoff(inputs = {'topic':'i recently participated in hackbangalore competition by angelhacks ,i chose the theme financial inclusion it was exiting to participate and know things'})
+result = crew.kickoff(inputs = {'topic':text})
 print(result)
