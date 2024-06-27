@@ -1,12 +1,12 @@
 from crewai import Crew, Process
-from agents import drafting_agent, seo_optimization_agent, editing_refinement_agent, chief_agent
-from tasks import drafting_task, seo_task, chief_task, editing_task
+from agents import drafting_agent, seo_optimization_agent, editing_refinement_agent, chief_agent,image_generator_agent,content_formater_agent
+from tasks import drafting_task, seo_task, chief_task, editing_task,image_generate_task,format_content_task
 
 class LinkedInPostGenerator:
     def __init__(self):
         self.crew = Crew(
-            agents=[drafting_agent, editing_refinement_agent, seo_optimization_agent, chief_agent],
-            tasks=[drafting_task, editing_task, seo_task, chief_task],
+            agents=[drafting_agent, editing_refinement_agent, seo_optimization_agent, chief_agent,image_generator_agent,content_formater_agent],
+            tasks=[drafting_task, editing_task, seo_task, chief_task,image_generate_task,format_content_task],
             process=Process.sequential,
             memory=True,
             cache=True,

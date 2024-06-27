@@ -2,7 +2,9 @@ import os
 from crewai import Agent
 from dotenv import load_dotenv
 from langchain_groq import ChatGroq
-# from tools.serper import tool
+# from tools.tool import file_read_tool
+# from tools.tool import generateimage
+from tools.serper import search_tool
 from langchain_google_genai import ChatGoogleGenerativeAI
 from dotenv import load_dotenv
 import torch
@@ -15,15 +17,15 @@ else:
 
 load_dotenv()
 
-llm = ChatGoogleGenerativeAI(model = "gemini-1.5-flash",
-                             verbose = True,
-                             temperature = 0.5,
-                             google_api_key = os.getenv("GOOGLE_API_KEY"))
+# llm = ChatGoogleGenerativeAI(model = "gemini-1.5-flash",
+#                              verbose = True,
+#                              temperature = 0.5,
+#                              google_api_key = os.getenv("GOOGLE_API_KEY"))
 
 # llm = Ollama(model="llama3")
-# groq_api_key = os.environ["GROQ_API_KEY"]
-# llm = ChatGroq(groq_api_key=groq_api_key,
-#                model_name="llama3-70b-8192")
+groq_api_key = os.environ["GROQ_API_KEY"]
+llm = ChatGroq(groq_api_key=groq_api_key,
+               model_name="llama3-70b-8192")
 
 drafting_agent = Agent(
     role='Content Drafting Specialist',
@@ -40,7 +42,7 @@ drafting_agent = Agent(
         "tones and styles, from professional and informative to casual and conversational. Whether you're writing about career milestones, sharing personal insights, or "
         "discussing trending topics, you know how to create posts that attract attention and spark meaningful interactions on LinkedIn."
     ),
-    # tools=[tool],      
+    tools=[search_tool],      
     llm=llm,
     allow_delegation=True ,   
 )
@@ -63,7 +65,7 @@ editing_refinement_agent = Agent(
         "initial drafts into polished and compelling posts that not only convey intended messages but also captivate and resonate with a diverse audience. Utilizing advanced "
         "natural language processing tools and grammar checkers, you bring a professional finish to every post, ensuring it stands out in the competitive digital landscape."
     ), 
-    # tools=[tool],  
+    tools=[search_tool],  
     llm=llm,
     allow_delegation=True, 
 )
@@ -89,44 +91,17 @@ seo_optimization_agent = Agent(
         "insights into content visibility and audience targeting make you an invaluable asset in driving engagement and attracting "
         "the right viewers."
     ),  
-    # tools=[tool], 
+    tools=[search_tool], 
     llm=llm,
     allow_delegation=True,
 )
 
-
-# visual_content_agent = Agent(
-#     role='Visual Content Creation Specialist',
-#     goal=(
-#         "Create or suggest visually engaging elements to accompany LinkedIn posts, ensuring each piece enhances the overall message "
-#         "and attracts audience attention. Utilize AI tools and graphic design platforms to generate images, infographics, or videos "
-#         "that are tailored to the post's content and optimized for LinkedIn's display formats. Provide relevant visual suggestions from "
-#         "a curated library or stock photo repositories to match the post's theme and target audience. Ensure that every visual component "
-#         "aligns with the brand's identity and effectively supports the post's communication objectives."
-#     ),
-#     memory = True,
-#     verbose=True,
-#     backstory=(
-#         "You are a highly skilled visual content creator with a deep passion for combining aesthetics with effective communication. With a "
-#         "strong background in graphic design and multimedia, you excel at producing compelling visual elements that enhance written content. "
-#         "Whether generating unique images, crafting engaging infographics, or creating captivating videos, you bring creativity and precision "
-#         "to every visual project. Your expertise extends to utilizing cutting-edge AI tools and graphic design platforms to produce high-quality "
-#         "visuals that are perfectly optimized for LinkedIn's display formats. Additionally, you have a keen eye for selecting relevant stock images "
-#         "or photos from extensive libraries that align with the post's message and audience. Your ability to transform ideas into visually appealing "
-#         "and engaging content makes you an essential contributor to the content creation process."
-#     ),
-#      
-#     tools=[], 
-#     llm=llm,
-#      allow_delegation=True, 
-# )
-
 chief_agent = Agent(
-    role="Chief LinkedIn Post Compiler",
+    role="Chief LinkedIn content Compiler",
     goal=(
-        "Aggregate outputs from Drafting, Refinement, SEO Optimization, and Visual Content "
+        "Aggregate outputs from Drafting, Refinement, SEO Optimization, "
         "Generation Agents into a cohesive LinkedIn post. Ensure the post is polished, "
-        "optimized for SEO, and visually appealing."
+        "optimized for SEO, and visually appealing content."
     ),
     verbose=True,
     memory = True,
@@ -136,8 +111,34 @@ chief_agent = Agent(
         "My goal is to deliver polished and engaging content that resonates with "
         "audiences on LinkedIn."
     ),
-    # tools=[tool], 
+    tools=[search_tool], 
     llm=llm,
     allow_delegation=False, 
 
+)
+
+image_generator_agent = Agent(
+    role="Professional Image Creator for LinkedIn Posts",
+    goal=(
+        "To produce visually appealing and contextually relevant images that enhance the engagement and professionalism of LinkedIn posts. "
+        "Each image should align with the topic and message of the post, reflecting the brand's identity and appealing to LinkedIn's professional audience."
+    ),
+    backstory=(
+        "A sophisticated AI with a keen eye for design, specializing in creating visuals that amplify the message of LinkedIn posts. "
+        "Leveraging advanced image generation technology and a deep understanding of LinkedIn's professional context, it crafts images that capture attention and drive engagement, tailored to resonate with LinkedIn's audience."
+    ),
+    verbose=True,
+    llm=llm, 
+    # tools=[generateimage],  
+    allow_delegation=False
+)
+
+content_formater_agent = Agent(
+    role='Content Formatter',
+    goal='Format the written story content in markdown, including images at the beginning of each chapter.',
+    backstory='A meticulous formatter who enhances the readability and presentation of the storybook.',
+    verbose=True,
+    llm=llm,
+    # tools=[file_read_tool],
+    allow_delegation=False
 )
