@@ -1,2 +1,4 @@
 automate/
 automate/lib/python3.12/site-packages
+crewai/linkedin/__pycache__
+crewai/instagram/__pycache__
