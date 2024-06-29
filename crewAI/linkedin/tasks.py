@@ -81,5 +81,5 @@ format_content_task = Task(
     expected_output='The entire post content formatted in markdown, with content on the beginning and choose one of the description among the description generated  attach it to the end pf the post content.',
     context=[chief_task, image_generate_task],
     async_execution=False,
-    output_file="post.md"
+    output_file="outputs/post.md"
 )
