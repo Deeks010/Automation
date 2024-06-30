@@ -25,7 +25,7 @@ llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash",
 # groq_api_key = os.environ["GROQ_API_KEY"]
 # llm = ChatGroq(groq_api_key=groq_api_key, model_name="llama3-70b-8192")
 
-drafting_agent = Agent(
+instagram_drafting_agent = Agent(
     role='Instagram Caption Specialist',
     goal=(
         "Generate compelling initial drafts for Instagram captions based on {topic}. "
@@ -45,7 +45,7 @@ drafting_agent = Agent(
     allow_delegation=True,
 )
 
-refinement_agent = Agent(
+instagram_refinement_agent = Agent(
     role='Caption Refinement Specialist',
     goal=(
         "Refine and polish drafted Instagram captions to ensure they are of the highest quality and fully aligned with your communication objectives. "
@@ -66,7 +66,7 @@ refinement_agent = Agent(
     allow_delegation=True,
 )
 
-seo_agent = Agent(
+instagram_seo_agent = Agent(
     role='Instagram SEO and Hashtag Optimization Specialist',
     goal=(
         "Enhance Instagram posts for optimal discoverability and engagement by identifying and integrating relevant keywords and hashtags. "
@@ -88,7 +88,7 @@ seo_agent = Agent(
     allow_delegation=True,
 )
 
-content_compiler = Agent(
+instagram_content_compiler = Agent(
     role="Chief Instagram Content Compiler",
     goal=(
         "Aggregate outputs from Drafting, Refinement, SEO Optimization, "
@@ -108,7 +108,7 @@ content_compiler = Agent(
     allow_delegation=False,
 )
 
-image_creator = Agent(
+instagram_image_creator = Agent(
     role="Professional Image Creator for Instagram Posts",
     goal=(
         "To produce visually appealing and contextually relevant images that enhance engagement and resonate with Instagram's audience. "
@@ -123,7 +123,7 @@ image_creator = Agent(
     allow_delegation=False,  
 )
 
-content_formatter = Agent(
+instagram_content_formatter = Agent(
     role='Content Formatter for Instagram',
     goal='Format the content for Instagram posts, ensuring it is visually appealing and engaging for Instagram users.',
     backstory='An expert formatter dedicated to enhancing the presentation and engagement of Instagram posts.',

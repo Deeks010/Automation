@@ -1,12 +1,26 @@
 from crewai import Crew, Process
-from agents import drafting_agent, seo_optimization_agent, editing_refinement_agent, chief_agent,image_generator_agent,content_formater_agent
-from tasks import drafting_task, seo_task, chief_task, editing_task,image_generate_task,format_content_task
+from agents import drafting_agent, seo_optimization_agent, editing_refinement_agent, chief_agent
+from tasks import drafting_task, seo_task, chief_task, editing_task
 
-class LinkedInPostGenerator:
+class CrewRunner:
     def __init__(self):
+        self.agents = [
+            drafting_agent,
+            editing_refinement_agent,
+            seo_optimization_agent,
+            chief_agent
+        ]
+
+        self.tasks = [
+            drafting_task,
+            editing_task,
+            seo_task,
+            chief_task
+        ]
+        
         self.crew = Crew(
-            agents=[drafting_agent, editing_refinement_agent, seo_optimization_agent, chief_agent,image_generator_agent,content_formater_agent],
-            tasks=[drafting_task, editing_task, seo_task, chief_task,image_generate_task,format_content_task],
+            agents=self.agents,
+            tasks=self.tasks,
             process=Process.sequential,
             memory=True,
             cache=True,
@@ -14,14 +28,12 @@ class LinkedInPostGenerator:
             share_crew=True
         )
 
-    def generate_post(self, topic):
-        result = self.crew.kickoff(inputs={'topic': topic})
-        return result
+    def run(self):
+        text = input("Topic: ")
+        result = self.crew.kickoff(inputs={'topic': text})
+        print(result)
+
 
 if __name__ == "__main__":
-    generator = LinkedInPostGenerator()
-
-    text = input("Enter here: ")
-
-    result = generator.generate_post(topic=text)
-    print(result)
+    crew_runner = CrewRunner()
+    crew_runner.run()

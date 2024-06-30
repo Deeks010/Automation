@@ -1,6 +1,5 @@
 from crewai import Task
-from agents import content_compiler,content_formatter,drafting_agent,image_creator,refinement_agent,seo_agent
-
+from agents import instagram_content_compiler,instagram_content_formatter,instagram_drafting_agent,instagram_image_creator,instagram_refinement_agent,instagram_seo_agent
 drafting_task_instagram = Task(
     description=(
         "Generate a draft for an Instagram post on {topic}. "
@@ -9,7 +8,7 @@ drafting_task_instagram = Task(
     expected_output=(
         "A compelling draft Instagram post on {topic}, capturing the essence of {topic} and resonating with Instagram users."
     ),
-    agent=drafting_agent,  
+    agent=instagram_drafting_agent,  
 )
 
 editing_task_instagram = Task(
@@ -22,7 +21,7 @@ editing_task_instagram = Task(
         "A polished Instagram post on {topic}, improved in grammar, clarity, and readability. "
         "The post effectively communicates the intended message while maintaining a style that resonates with Instagram users."
     ),
-    agent=refinement_agent,  
+    agent=instagram_refinement_agent,  
 )
 
 seo_task_instagram = Task(
@@ -35,7 +34,7 @@ seo_task_instagram = Task(
         "The post is structured to maximize discoverability and engagement, appealing to the target audience effectively."
         "Only the top 5 keywords and hashtags must be chosen"
     ),
-    agent=seo_agent,  
+    agent=instagram_seo_agent,  
 )
 
 chief_task_instagram = Task(
@@ -48,7 +47,7 @@ chief_task_instagram = Task(
         "The post is engaging, visually appealing, and tailored to resonate with the target audience on Instagram. "
         "End the post with an interactive call-to-action inviting viewers to engage with the content."
     ),
-    agent=content_compiler,  
+    agent=instagram_content_compiler,  
 )
 
 image_generate_task_instagram = Task(
@@ -64,7 +63,7 @@ image_generate_task_instagram = Task(
 
 			"Think creatively and focus on how the image can capture the audience's attention."
     ),
-    agent=image_creator,  
+    agent=instagram_image_creator,  
     expected_output=(
         "Three options of photographs that visually represent and complement the Instagram post on {topic}. "
         "Each image should be professional, engaging, and aligned with Instagram's aesthetic and tone. "
@@ -74,8 +73,8 @@ image_generate_task_instagram = Task(
 
 format_content_task_instagram = Task(
     description='Format the Instagram content in markdown, including image content at the end of the Instagram post.',
-    agent=content_formatter,  
-    expected_output='The entire post content around 25 words in the beginning and choose one description among the descriptions generated attach it to the end of the post content format in down to  markdown language.',
+    agent=instagram_content_formatter,  
+    expected_output='The entire post content around 25 words in the beginning and choose one description among the descriptions generated attach it to the end of the post content format in down to  markdown language',
     context=[chief_task_instagram, image_generate_task_instagram],  
     async_execution=False,
     output_file="outputs/insta_post.md"  
