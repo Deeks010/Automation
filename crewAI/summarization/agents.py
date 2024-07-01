@@ -1,7 +1,7 @@
 from crewai import Agent
 from langchain_google_genai import ChatGoogleGenerativeAI
 from dotenv import load_dotenv
-from tools.websearch import search_tool
+from .tools.websearch import search_tool
 import os
 
 load_dotenv()

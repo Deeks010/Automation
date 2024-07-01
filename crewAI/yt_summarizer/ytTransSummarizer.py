@@ -114,13 +114,13 @@ class YouTubeTranscriptSummarizer:
             print(f"An error occurred: {e}")
 
 
-def main():
-    summarizer = YouTubeTranscriptSummarizer()
+# def main():
+#     summarizer = YouTubeTranscriptSummarizer()
 
-    youtube_link = input("Enter YouTube Video Link: ")
+#     youtube_link = input("Enter YouTube Video Link: ")
 
-    if youtube_link:
-        summarizer.process_video(youtube_link)
+#     if youtube_link:
+#         summarizer.process_video(youtube_link)
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()

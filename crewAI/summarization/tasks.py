@@ -1,5 +1,5 @@
 from crewai import Task
-from agents import preprocessing_agent,topic_extraction_agent,summarization_agent,evaluation_agent
+from .agents import preprocessing_agent,topic_extraction_agent,summarization_agent,evaluation_agent
 
 preprocessing_task = Task(
     description=("Clean and preprocess the raw text data related to {topic}. Remove noise, handle formatting inconsistencies, and prepare the text for efficient summarization."),

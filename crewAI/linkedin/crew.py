@@ -1,11 +1,12 @@
 from crewai import Crew, Process
-from agents import drafting_agent, seo_optimization_agent, editing_refinement_agent, chief_agent
-from tasks import drafting_task, seo_task, chief_task, editing_task
+from .agents import drafting_agent, seo_optimization_agent, editing_refinement_agent, chief_agent
+from .tasks import drafting_task, seo_task, chief_task, editing_task
 
 class LinkedIn:
-    def __init__(self):
+    def __init__(self,voice_assistant):
         self.agents = [drafting_agent,editing_refinement_agent,seo_optimization_agent,chief_agent]
         self.tasks = [drafting_task,editing_task,seo_task,chief_task]
+        self.voice_assistant = voice_assistant
         
         self.crew = Crew(
             agents=self.agents,
@@ -18,11 +19,13 @@ class LinkedIn:
         )
 
     def run(self):
-        text = input("Topic: ")
-        result = self.crew.kickoff(inputs={'topic': text})
-        print(result)
+        self.voice_assistant.speak("Enter the Topic to be posted on : ")
+        text = self.voice_assistant.get_audio()
+        if len(text) > 1:
+            result = self.crew.kickoff(inputs={'topic': text})
+            print(result)
 
 
-if __name__ == "__main__":
-    crew_runner = LinkedIn()
-    crew_runner.run()
+# if __name__ == "__main__":
+#     crew_runner = LinkedIn()
+#     crew_runner.run()
