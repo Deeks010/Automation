@@ -78,8 +78,8 @@ image_generate_task = Task(
 format_content_task = Task(
     description='Format the linkedin content in markdown, including an image at the end of the linkedin post.',
     agent=content_formater_agent,
-    expected_output='The entire post content formatted in markdown, with content on the beginning and choose one of the description among the description of the image content generated and attach it to the end pf the post content.',
+    expected_output='The entire post content formatted in markdown, with content on the beginning and choose one of the description among the description of the image content generated and attach it to the end of the post content.',
     context=[chief_task, image_generate_task],
     async_execution=False,
-    output_file="post.md"
+    output_file="outputs/post.md"
 )

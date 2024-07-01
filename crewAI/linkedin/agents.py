@@ -135,8 +135,8 @@ image_generator_agent = Agent(
 
 content_formater_agent = Agent(
     role='Content Formatter',
-    goal='Format the written story content in markdown, including images at the beginning of each chapter.',
-    backstory='A meticulous formatter who enhances the readability and presentation of the storybook.',
+    goal='Format the LinkedIn content in markdown, including images at the end of the post content.',
+    backstory='A meticulous formatter who enhances the readability and presentation of the linkedin posts.',
     verbose=True,
     llm=llm,
     # tools=[file_read_tool],

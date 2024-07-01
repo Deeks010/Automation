@@ -16,8 +16,6 @@ tasks = ViralContentCreationTasks()
 agents = ViralContentCreators()
 
 
-text = input("What is your Tweet about?\n")
-
 # model = os.getenv('MODEL')
 # if not model:
 # 	raise ValueError("MODEL environment variable is not set.")
@@ -102,33 +100,38 @@ text = input("What is your Tweet about?\n")
 #         return e
 
 
-trending_topic_researcher_agent = agents.trending_topic_researcher_agent()
-content_researcher_agent = agents.content_researcher_agent()
-creative_agent = agents.creative_content_creator_agent()
+class Twitter:
+	def __init__(self) -> None:
+		self.agents = [trending_topic_researcher_agent,content_researcher_agent,creative_agent]
+		self.tasks = [topic_analysis,content_research,twitter_posts]
+		
+		self.crew = Crew(
+			agents=self.agents,
+			tasks=self.tasks,
+			process=Process.sequential,
+			verbose=True
+		)
 
-topic_analysis = tasks.topic_analysis(trending_topic_researcher_agent, text)
-content_research = tasks.content_research(content_researcher_agent, text)
-twitter_posts = tasks.create_twitter_posts(creative_agent, text)
+	def run(self):
+		text = input("Topic: ")
+		result = self.crew.kickoff(inputs={'topic': text})
+		print(result)
 
-crew = Crew(
-	agents=[
-		trending_topic_researcher_agent,
-		content_researcher_agent,
-		creative_agent
-	],
-	tasks=[
-		topic_analysis,
-		content_research,
-		twitter_posts
-	],
-    process=Process.sequential,
-	verbose=True
-)
+if __name__ == "__main__":
+	text = input("What is your Tweet about?\n")
 
-result = crew.kickoff()
+	trending_topic_researcher_agent = agents.trending_topic_researcher_agent()
+	content_researcher_agent = agents.content_researcher_agent()
+	creative_agent = agents.creative_content_creator_agent()
 
-print("Crew usage", crew.usage_metrics)
-print(result)
+	topic_analysis = tasks.topic_analysis(trending_topic_researcher_agent, text)
+	content_research = tasks.content_research(content_researcher_agent, text)
+	twitter_posts = tasks.create_twitter_posts(creative_agent, text)
+
+	crew_runner = Twitter()
+	crew_runner.run()
+
+   
 
 
 # tweets = get_tweets_from_llm(result)

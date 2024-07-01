@@ -71,7 +71,9 @@ class ViralContentCreationTasks:
 					  
 				After executing this task, you should print the output.
 				Task should return an array containing all the 5 twitter posts"""),
-			expected_output="The entire post content must be formatted in markdown containing the twitter posts, not as list of posts",
+			expected_output="The entire post content must be formatted in markdown containing the twitter posts, not as list of posts andnit should not contain any brackets for the refinement "
+			"The twitter post that you generated must be the final tweet."
+			"Should not need any alterations",
 			output_file="outputs/tweet.md"  ,
 			agent=agent
 		)
