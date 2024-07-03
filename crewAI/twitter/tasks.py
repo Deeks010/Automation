@@ -39,7 +39,7 @@ content_research = Task(
 create_twitter_posts = Task(
 		description=("""\
 			First filter out the topics that are related to {topic} and remove the ones not related.
-			Next, Create 5 Twitter posts related to {topic} using the content research done for each of 
+			Next, Create a Twitter posts related to {topic} using the content research done for each of 
 				the trending topic/search and craft engaging, valuable and actionable Twitter posts that are ready to 
 				be published. Try to use the following structure:
 				1. Start with a Strong Hook: Begin with an intriguing question, startling fact, or 
@@ -60,26 +60,12 @@ create_twitter_posts = Task(
 					🌞🚀 Share this tip with someone who needs a focus boost. 
 					#ProductivityHacks #Mindfulness #MentalHealth"
 
-			Note: Ensure each post is standalone and provides all necessary context, as users might 
-					not see other related posts. Compile these posts into a document or list, with each entry clearly 
-					labeled with the topic it addresses. This document will be used by another agent to handle 
-					the actual posting on Twitter.
+			Note: The generated tweet must be within 250 characters strictly and not excedding the limit ant any cost. It should be within the character limit.
 					
 			After executing this task, you should print the output.
-			Task should return an array containing all the 5 twitter posts"""),
-		expected_output="The entire post content must be formatted in markdown containing the twitter posts, not as list of posts andnit should not contain any brackets for the refinement "
+			Task should 1 twitter post"""),
+		expected_output="The generated tweet must be stricly below 250 characters formatted in markdown containing the twitter posts, not as list of posts and it should not contain any brackets for the refinement "
 		"The twitter post that you generated must be the final tweet."
-		"Should not need any alterations",
-		output_file="outputs/tweet.md"  ,
+		"Should not need any alterations. Your output should be the final tweet.",
 		agent=creative_content_creator_agent
 	)
-
-# def publish_twitter_posts(, agent, tweets):
-# 	return Task(
-# 		description=("""\
-# 			Print all the tweets created by previous task in the logs.
-# 			Publish all the tweets to Twitter.
-# 			"""),
-# 		expected_output="Posting status of all the tweets.",
-# 		agent=agent
-# 	)

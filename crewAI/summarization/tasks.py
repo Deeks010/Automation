@@ -24,5 +24,5 @@ evaluation_task = Task(
     expected_output=('The entire summary must be formatted and written  beautifully in markdown language'),
     agent=evaluation_agent,
     async_execution=False,
-    output_file="outputs/summarizer.md"
+    output_file="outputs/summarizer/summarized.md"
 )

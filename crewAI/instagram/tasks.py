@@ -78,5 +78,5 @@ format_content_task_instagram = Task(
     expected_output='The entire post content around 25 words in the beginning and choose one description among the descriptions generated attach it to the end of the post content format in down to  markdown language',
     context=[chief_task_instagram, image_generate_task_instagram],  
     async_execution=False,
-    output_file="outputs/insta_post.md"  
+    output_file="outputs/instagram/post.md"  
 )

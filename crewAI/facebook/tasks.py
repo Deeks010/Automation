@@ -103,5 +103,5 @@ format_content_task_facebook = Task(
     ),
     context=[chief_task_facebook, image_generate_task_facebook],
     async_execution=False,
-    output_file="outputs/facebook_post.md"
+    output_file="outputs/facebook/post.md"
 )

@@ -2,7 +2,7 @@ from crewAI.email.src.graph import WorkFlow
 from crewAI.facebook.crew import Facebook
 from crewAI.instagram.crew import Instagram
 from crewAI.linkedin.crew import LinkedIn
-from crewAI.twitter.crew import Twitter
+from crewAI.twitter.twitter import TwitterAutoPoster
 from crewAI.summarization.crew import Summarizer
 from crewAI.yt_summarizer.ytTransSummarizer import YouTubeTranscriptSummarizer
 from voice import VoiceAssistant
@@ -13,14 +13,15 @@ instagram = Instagram(voice_assistant)
 linkedin = LinkedIn(voice_assistant)
 summarizer = Summarizer(voice_assistant)
 ytSummarizer = YouTubeTranscriptSummarizer()
-twitter = Twitter(voice_assistant)
+twitter = TwitterAutoPoster()
 # app = WorkFlow().app
 
 
 def Automation():
     while True:
-        voice_assistant.speak("Listening")
-        query = voice_assistant.get_audio()
+        # voice_assistant.speak("Listening")
+        # query = voice_assistant.get_audio()
+        query = input(": ")
 
         if "linkedin" in query.lower():
             linkedin.run()
