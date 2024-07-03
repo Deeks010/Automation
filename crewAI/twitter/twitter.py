@@ -74,16 +74,17 @@ class TwitterAutoPoster:
         return result
 
     def demo(self):
-        # self.twitter = self.make_token()
-        # authorization_url, state = self.twitter.authorization_url(
-        #     self.auth_url, code_challenge=self.code_challenge, code_challenge_method="S256"
-        # # )
-        # session["oauth_state"] = state
-        # print(f"Authorization URL: {authorization_url}")
-        # print(f"OAuth State: {state}")
-        # return redirect(authorization_url)
-        self.post_tweet()
-        return "hello"
+        self.twitter = self.make_token()
+        authorization_url, state = self.twitter.authorization_url(
+            self.auth_url, code_challenge=self.code_challenge, code_challenge_method="S256"
+        )
+        session["oauth_state"] = state
+        print(f"Authorization URL: {authorization_url}")
+        print(f"OAuth State: {state}")
+   
+        return redirect(authorization_url)
+        # self.post_tweet()
+        # return "hello"
     
 
     def callback(self):
@@ -96,10 +97,7 @@ class TwitterAutoPoster:
         )
         with open("access_token.json", "w") as token_file:
             json.dump(token, token_file)
-        
-
-        
-
+   
     def run(self):
         self.app.run()
 
