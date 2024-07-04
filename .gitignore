@@ -3,3 +3,4 @@ credentials.json
 .DS_STORE
 access_token.json
 .env
+crewAI/discord/config.py
