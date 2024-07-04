@@ -1,5 +1,5 @@
 /automate/
-credentials.json
+secret.json
 .DS_STORE
 access_token.json
 .env
